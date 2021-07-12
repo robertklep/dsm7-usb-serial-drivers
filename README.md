@@ -1,5 +1,10 @@
 # Missing USB serial drivers for DSM 7 <a href="https://www.paypal.com/donate?hosted_button_id=E7DEFXHFSK8Y6"><img style="vertical-align:middle" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif"></a>
 
+### Supported drivers
+
+* `cp210x`
+* `ch341`
+
 ### Supported platforms
 
 * `apollolake`
