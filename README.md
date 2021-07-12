@@ -3,6 +3,7 @@
 ### Supported platforms
 
 * `apollolake`
+* `geminilake`
 * `armada38x`
 * `armadaxp`
 
