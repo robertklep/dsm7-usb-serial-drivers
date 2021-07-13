@@ -7,10 +7,14 @@
 
 ### Supported platforms
 
-* `apollolake`
-* `geminilake`
-* `armada38x`
-* `armadaxp`
+* `apollolake` (linux-4.4.x)
+* `armada38x` (linux-3.10.x-bsp)
+* `armadaxp` (linux-3.x)
+* `avoton` (linux-3.10.x)
+* `braswell` (linux-3.10.x)
+* `geminilake` (linux-4.4.x)
+* `monaco` (linux-3.10.x)
+* `v1000` (linux-4.4.x)
 
 Feel free to [request other platforms](https://github.com/robertklep/dsm7-usb-serial-drivers/issues). You can find out which platform your NAS is using [on this page](https://kb.synology.com/en-global/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have).
 
