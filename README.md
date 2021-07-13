@@ -16,7 +16,7 @@
 * `monaco` (linux-3.10.x)
 * `v1000` (linux-4.4.x)
 
-Feel free to [request other platforms](https://github.com/robertklep/dsm7-usb-serial-drivers/issues). You can find out which platform your NAS is using [on this page](https://kb.synology.com/en-global/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have).
+Feel free to [request other drivers or platforms](https://github.com/robertklep/dsm7-usb-serial-drivers/issues). You can find out which platform your NAS is using [on this page](https://kb.synology.com/en-global/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have).
 
 ### Installation
 
