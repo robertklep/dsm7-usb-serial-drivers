@@ -32,6 +32,33 @@ You don't need to reboot your NAS for the modules to load, just execute the scri
 # /usr/local/etc/rc.d/usb-serial-drivers.sh
 ```
 
+### Building from source
+
+I've built these modules in an Ubuntu 18.04.5 virtual machine on my Synology NAS.
+
+To set up the build environment, I followed the steps [in this document](https://help.synology.com/developer-guide/getting_started/prepare_environment.html). The different NAS targets/platforms can be installed next to each other.
+
+To build the modules for a particular platform, I follow these steps:
+```
+sudo rm -fr /toolkit/build_env/ds.$platform-7.0/source
+sudo /toolkit/pkgscripts-ng/PkgCreate.py -X 1 -P 1 -v 7.0 --min-sdk 7.0 -p $platform $module
+cp -v /toolkit/build_env/ds.$platform-7.0/source/$module/*.ko /tmp
+```
+
+Replace `$platform` with the NAS platform, for example `apollolake`.
+Replace `$module` with the source directory name (found in `sources/` in this repository) relevant for that particular platform. For example, `apollolake` requires the `4.4.x` sources.
+
+Put together, to build for `apollolake`, the commands become:
+```
+sudo rm -fr /toolkit/build_env/ds.apollolake-7.0/source
+sudo /toolkit/pkgscripts-ng/PkgCreate.py -X 1 -P 1 -v 7.0 --min-sdk 7.0 -p apollolake 4.4.x
+cp -v /toolkit/build_env/ds.apollolake-7.0/source/$module/*.ko /tmp
+```
+
+Due to some concurrency issues that I haven't bothered to look into, the second step (`PkgCreate`) sometimes fails with a compilation error. If that happens, start over.
+
+The last step will copy the driver modules to `/tmp`
+
 ### Disclaimer
 
 I don't/can't test every driver. Use at your own peril.
