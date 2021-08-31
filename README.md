@@ -29,7 +29,7 @@ NB: the following steps will require SSH access and administrator rights. For th
 
 You don't need to reboot your NAS for the modules to load, just execute the script after you completed the previous steps:
 ```
-# /usr/local/etc/rc.d/usb-serial-drivers.sh
+# /usr/local/etc/rc.d/usb-serial-drivers.sh start
 ```
 
 ### Building from source
