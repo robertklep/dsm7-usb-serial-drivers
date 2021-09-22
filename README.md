@@ -4,6 +4,7 @@
 
 * `cp210x`
 * `ch341`
+* `pl2303` (not for all platforms)
 
 ### Supported platforms
 

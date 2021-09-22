@@ -6,6 +6,7 @@ case $1 in
     insmod /lib/modules/cdc-acm.ko > /dev/null 2>&1
     insmod /lib/modules/cp210x.ko > /dev/null 2>&1
     insmod /lib/modules/ch341.ko > /dev/null 2>&1
+    insmod /lib/modules/pl2303.ko > /dev/null 2>&1
     ;;
   stop)
     exit 0
