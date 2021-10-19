@@ -1,8 +1,8 @@
-kernel_mod = ch341.ko cp210x.ko
+kernel_mod = ch341.ko cp210x.ko pl2303.ko
 
 all: $(kernel_mod)
 
-obj-m := ch341.o cp210x.o
+obj-m := ch341.o cp210x.o pl2303.o
 
 $(kernel_mod):
 	make -C $(KSRC) M=$(PWD) modules
