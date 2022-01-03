@@ -5,6 +5,7 @@
 * `cp210x`
 * `ch341`
 * `pl2303` (not for all platforms)
+* `ti_usb_3410_5052` (not for all platforms)
 
 ### Supported platforms
 
