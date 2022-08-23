@@ -68,4 +68,4 @@ I don't/can't test every driver. Use at your own peril.
 
 ### Attribution
 
-I'm using the source code (as-is) for the drivers included in the Linux kernel from the [Synology Open Source Project](https://sourceforge.net/projects/dsgpl/).
+I'm using the source code (as-is) for the drivers included in the Linux kernel from the [Synology Open Source Project](https://sourceforge.net/projects/dsgpl/) and the [Synology Toolchain GPL sources](https://archive.synology.com/download/ToolChain/Synology%20NAS%20GPL%20Source/).
