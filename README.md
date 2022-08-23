@@ -14,6 +14,7 @@
 * `armadaxp` (linux-3.x)
 * `avoton` (linux-3.10.x)
 * `braswell` (linux-3.10.x)
+* `cedarview` (linux-3.10.x)
 * `geminilake` (linux-4.4.x)
 * `monaco` (linux-3.10.x)
 * `v1000` (linux-4.4.x)
