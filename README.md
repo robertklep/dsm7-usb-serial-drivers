@@ -1,5 +1,9 @@
 # Missing USB serial drivers for DSM 7 <a href="https://www.paypal.com/donate?hosted_button_id=E7DEFXHFSK8Y6"><img style="vertical-align:middle" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif"></a>
 
+## Import from Jadahl.com (Oct 2022)
+
+Since the website Jadahl.com, another good source of DSM modules, has been offline for some time and doesn't look like it might be coming back, I retrieved all modules that were posted there (via https://web.archive.org) and added them to this repository. Thank you very much to the person that ran it 😊
+
 ### Supported drivers
 
 * `cp210x`
@@ -9,17 +13,7 @@
 
 ### Supported platforms
 
-* `apollolake` (linux-4.4.x)
-* `armada38x` (linux-3.10.x-bsp)
-* `armadaxp` (linux-3.x)
-* `avoton` (linux-3.10.x)
-* `braswell` (linux-3.10.x)
-* `cedarview` (linux-3.10.x)
-* `geminilake` (linux-4.4.x)
-* `monaco` (linux-3.10.x)
-* `v1000` (linux-4.4.x)
-
-Feel free to [request other drivers or platforms](https://github.com/robertklep/dsm7-usb-serial-drivers/issues). You can find out which platform your NAS is using [on this page](https://kb.synology.com/en-global/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have). **Also check [here](http://www.jadahl.com/iperf-arp-scan/DSM_7.0/) to see if you can find the desired drivers for your platform there.**
+See [the modules/ directory](https://github.com/robertklep/dsm7-usb-serial-drivers/tree/main/modules).
 
 ### Installation
 
