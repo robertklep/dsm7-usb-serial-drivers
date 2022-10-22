@@ -15,6 +15,8 @@ Since the website Jadahl.com, another good source of DSM modules, has been offli
 
 See [the modules/ directory](https://github.com/robertklep/dsm7-usb-serial-drivers/tree/main/modules).
 
+Drivers for DSM 7.0 are available for most platforms, drivers for DSM 7.1 are slowly being added. If you're missing drivers for a particular platform, please [open an issue](https://github.com/robertklep/dsm7-usb-serial-drivers/issues) and I see what I can do.
+
 ### Which platform does my Synology use?
 
 Find your Synology model [on this page](https://kb.synology.com/en-uk/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have) and check the "Package Arch" column (second last).
