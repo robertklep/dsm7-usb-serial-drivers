@@ -15,6 +15,10 @@ Since the website Jadahl.com, another good source of DSM modules, has been offli
 
 See [the modules/ directory](https://github.com/robertklep/dsm7-usb-serial-drivers/tree/main/modules).
 
+### Which platform does my Synology use?
+
+Find your Synology model [on this page](https://kb.synology.com/en-uk/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have) and check the "Package Arch" column (second last).
+
 ### Installation
 
 NB: the following steps will require SSH access and administrator rights. For the latter, either use `sudo` for each command or use `su` to log in as root.
