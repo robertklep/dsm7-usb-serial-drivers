@@ -38,7 +38,7 @@ To set up the build environment, I followed the steps [in this document](https:/
 To build the modules for a particular platform, I follow these steps:
 ```
 sudo rm -fr /toolkit/build_env/ds.$platform-7.0/source
-sudo /toolkit/pkgscripts-ng/PkgCreate.py -X 1 -P 1 -v 7.0 --min-sdk 7.0 -p $platform $module
+sudo /toolkit/pkgscripts-ng/PkgCreate.py -X 0 -P 1 -v 7.0 --min-sdk 7.0 -p $platform $module
 cp -v /toolkit/build_env/ds.$platform-7.0/source/$module/*.ko /tmp
 ```
 
@@ -48,7 +48,7 @@ Replace `$module` with the source directory name (found in `sources/` in this re
 Put together, to build for `apollolake`, the commands become:
 ```
 sudo rm -fr /toolkit/build_env/ds.apollolake-7.0/source
-sudo /toolkit/pkgscripts-ng/PkgCreate.py -X 1 -P 1 -v 7.0 --min-sdk 7.0 -p apollolake 4.4.x
+sudo /toolkit/pkgscripts-ng/PkgCreate.py -X 0 -P 1 -v 7.0 --min-sdk 7.0 -p apollolake 4.4.x
 cp -v /toolkit/build_env/ds.apollolake-7.0/source/$module/*.ko /tmp
 ```
 
