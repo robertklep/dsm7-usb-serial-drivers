@@ -21,6 +21,14 @@ Drivers for DSM 7.0 are available for most platforms, drivers for DSM 7.1 are sl
 
 Find your Synology model [on this page](https://kb.synology.com/en-uk/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have) and check the "Package Arch" column (second last).
 
+### Downloading a module
+
+Github is a bit confusing if you want to download binary files like this repository provides.
+
+For instance, if you [go to this page](https://github.com/robertklep/dsm7-usb-serial-drivers/tree/main/modules/geminilake/dsm-7.1), the links to the `.ko` files are _not_ download links, they will just bring you to the [information page for that particular file](https://github.com/robertklep/dsm7-usb-serial-drivers/blob/main/modules/geminilake/dsm-7.1/cp210x.ko).
+
+From there, you can download the actual binary module file using the "Download" button in the bottom square in the page.
+
 ### Installation
 
 NB: the following steps will require SSH access and administrator rights. For the latter, either use `sudo` for each command or use `su` to log in as root.
