@@ -43,6 +43,20 @@ You don't need to reboot your NAS for the modules to load, just execute the scri
 # /usr/local/etc/rc.d/usb-serial-drivers.sh start
 ```
 
+#### Alternative method of loading modules at boot
+
+This method is explained [in this comment](https://github.com/robertklep/dsm7-usb-serial-drivers/issues/75#issuecomment-1554853821) by @GravityRZ:
+
+* Create a file named `95-usb-serial.conf` in the directory `/usr/lib/modules-load.d`
+* Set the correct permissions for the file: `sudo chmod 644 /usr/lib/modules-load.d/95-usb-serial.conf`
+* Edit the file and add the modules that need to be loaded at boot. All modules _require_ that `usbserial.ko` is loaded too, so make sure to add that first.
+
+  For example, to load the `ch341.ko` module, add the following to the file:
+  ```
+  usbserial.ko
+  ch341.ko
+  ```
+
 ### Building from source
 
 I've built these modules in an Ubuntu 18.04.5 virtual machine on my Synology NAS.
