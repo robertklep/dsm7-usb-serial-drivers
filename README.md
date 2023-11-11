@@ -11,11 +11,15 @@ Since the website Jadahl.com, another good source of DSM modules, has been offli
 * `pl2303` (not for all platforms)
 * `ti_usb_3410_5052` (not for all platforms)
 
+**NB**: some USB serial devices may already be supported natively by Synology using its USB CDC ACM driver (`/lib/modules/cdc-acm.ko`).
+
 ### Supported platforms
 
 See [the modules/ directory](https://github.com/robertklep/dsm7-usb-serial-drivers/tree/main/modules).
 
-Drivers for DSM 7.0 are available for most platforms, drivers for DSM 7.1 are slowly being added. If you're missing drivers for a particular platform, please [open an issue](https://github.com/robertklep/dsm7-usb-serial-drivers/issues) and I see what I can do (please also add the kernel version of your platform to your issue, you can find that out with `uname -a` from a terminal).
+Drivers for DSM 7.0 are available for most platforms, drivers for DSM 7.2 and 7.2 are slowly being added. If you're missing drivers for a particular platform, please [open an issue](https://github.com/robertklep/dsm7-usb-serial-drivers/issues) and I see what I can do (please also add the kernel version of your platform to your issue, you can find that out with `uname -a` from a terminal).
+
+**NB**: this repository is only for USB serial device drivers, it doesn't (and won't) provide drivers for other types of USB devices (TV tuners, Bluetooth, audio, etc). Sorry 🤷🏼‍♂️
 
 ### Which platform does my Synology use?
 
@@ -28,6 +32,14 @@ Github is a bit confusing if you want to download binary files like this reposit
 For instance, if you [go to this page](https://github.com/robertklep/dsm7-usb-serial-drivers/tree/main/modules/geminilake/dsm-7.1), the links to the `.ko` files are _not_ download links, they will just bring you to the [information page for that particular file](https://github.com/robertklep/dsm7-usb-serial-drivers/blob/main/modules/geminilake/dsm-7.1/cp210x.ko).
 
 From there, you can download the actual binary module file using the "Download/View raw" link in the bottom square in the page. There's also an explicit download button to the right.
+
+#### Downloading using `wget` or `curl`
+
+If you use a CLI tool like `wget` or `curl` to download the files, you also need the "raw" URL:
+```
+wget 'https://github.com/robertklep/dsm7-usb-serial-drivers/raw/main/modules/geminilake/dsm-7.1/cp210x.ko'
+```
+(notice the "raw" in the URL)
 
 ### Installation
 
@@ -42,6 +54,8 @@ You don't need to reboot your NAS for the modules to load, just execute the scri
 ```
 # /usr/local/etc/rc.d/usb-serial-drivers.sh start
 ```
+
+**NB**: if you don't want to use the script, at least make sure that you load `usbserial.ko` before any of the provided drivers, otherwise you'll get errors.
 
 ### Building from source
 
