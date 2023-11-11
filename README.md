@@ -11,15 +11,14 @@ Since the website Jadahl.com, another good source of DSM modules, has been offli
 * `pl2303` (not for all platforms)
 * `ti_usb_3410_5052` (not for all platforms)
 
-**NB**: some USB serial devices may already be supported natively by Synology using its USB CDC ACM driver (`/lib/modules/cdc-acm.ko`).
+###### Note: some USB serial devices may already be supported natively by Synology using its USB CDC ACM driver (`/lib/modules/cdc-acm.ko`).
+###### Note: this repository is only for USB serial device drivers, it doesn't (and won't) provide drivers for other types of USB devices (TV tuners, Bluetooth, audio, etc). Sorry 🤷🏼‍♂️
 
 ### Supported platforms
 
 See [the modules/ directory](https://github.com/robertklep/dsm7-usb-serial-drivers/tree/main/modules).
 
 Drivers for DSM 7.0 are available for most platforms, drivers for DSM 7.2 and 7.2 are slowly being added. If you're missing drivers for a particular platform, please [open an issue](https://github.com/robertklep/dsm7-usb-serial-drivers/issues) and I see what I can do (please also add the kernel version of your platform to your issue, you can find that out with `uname -a` from a terminal).
-
-**NB**: this repository is only for USB serial device drivers, it doesn't (and won't) provide drivers for other types of USB devices (TV tuners, Bluetooth, audio, etc). Sorry 🤷🏼‍♂️
 
 ### Which platform does my Synology use?
 
@@ -43,7 +42,7 @@ wget 'https://github.com/robertklep/dsm7-usb-serial-drivers/raw/main/modules/gem
 
 ### Installation
 
-NB: the following steps will require SSH access and administrator rights. For the latter, either use `sudo` for each command or use `su` to log in as root.
+###### Note: the following steps will require SSH access and administrator rights. For the latter, either use `sudo` for each command or use `su` to log in as root.
 
 * The kernel modules for each supported platform can be found in `modules/`. Copy the required files to your Synology and move them to `/lib/modules`
 * To get DSM 7 to load the modules at boot time, copy the included file `usb-serial-drivers.sh` to `/usr/local/etc/rc.d`
@@ -55,7 +54,7 @@ You don't need to reboot your NAS for the modules to load, just execute the scri
 # /usr/local/etc/rc.d/usb-serial-drivers.sh start
 ```
 
-**NB**: if you don't want to use the script, at least make sure that you load `usbserial.ko` before any of the provided drivers, otherwise you'll get errors.
+###### Note: if you don't want to use the script, at least make sure that you load `usbserial.ko` before any of the provided drivers, otherwise you'll get errors.
 
 ### Building from source
 
