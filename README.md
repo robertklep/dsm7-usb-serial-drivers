@@ -56,6 +56,47 @@ You don't need to reboot your NAS for the modules to load, just execute the scri
 
 ###### Note: if you don't want to use the script, at least make sure that you load `usbserial.ko` before any of the provided drivers, otherwise you'll get errors.
 
+#### Usage with NodeRed and Docker Compose on NAS
+
+Since many people might use those sensors together with NodeRed and docker, here is a short guide, to getting the USB Serial Device available in NodeRed.
+
+* Make sure to install the driver properly as above mentioned
+* You should have the _ttyUSB0_ device available. (can be checked with the command `ls /dev/ttyUSB0`. The response should be `/dev/ttyUSB0`)
+* Depending on your user settings, NodeRed needs access to this device. Make sure to set them up to have access to this device. A easy but not recommended and unsecure workarround is to used `chmod 777 /dev/ttyUSB0`.
+* In your docker compose file, make sure to pass the ttyUSB0 device: 
+  ```
+  devices:
+    - "/dev/ttyUSB0:/dev/ttyUSB0" 
+  ```
+* In NodeRed, use some serial node (in this example, the node *node-red-contrib-smartmeter* is being used) and set the settings accordingly to the passed ttyUSB0 device:
+  
+  ![](/ressources/NodeRed_settings_of_serial_device.png)
+
+
+Here is my docker compose to get you started:
+```
+node-red:
+  image: nodered/node-red:3.0.2
+  environment:
+    - TZ=Europe/Amsterdam
+  ports:
+    - "1880:1880"
+  volumes: 
+    - /volume1/docker/mystack/nodered:/data
+  devices:
+    - "/dev/ttyUSB0:/dev/ttyUSB0" #USB to Serial device for Smartmeter (eHZ stromzaehler)
+  user: 1026  # < This user needs access to ttyUSB0. solved with chmod 777 quick n dirty
+  restart: always
+  network_mode: "host" 
+```
+
+###### Note: This might not be the best way to do it, but will get you started. Important to note, some steps have to be performed after each reboot. Therefor it is recommendet to add a Task in the Task-Scheduler. Make sure it triggers after each reboot and is being executed as root. Important to node, adapt the second line accordingly to your installed driver.
+```
+modprobe usbserial
+insmod /lib/modules/cp210x.ko > /dev/null 2>&1
+chmod 777 /dev/ttyUSB0
+```
+
 ### Building from source
 
 I've built these modules in an Ubuntu 18.04.5 virtual machine on my Synology NAS.
