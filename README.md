@@ -56,6 +56,59 @@ You don't need to reboot your NAS for the modules to load, just execute the scri
 
 ###### Note: if you don't want to use the script, at least make sure that you load `usbserial.ko` before any of the provided drivers, otherwise you'll get errors.
 
+### Using the devices with Docker (thanks to @tinooo for suggesting this!)
+
+Since many people want to use these serial devices with Docker containers running Home Assistant, Node-RED or Zigbee2MQTT, here's a short guide to explain how to pass a serial device to an application running inside a container.
+
+This assumes that you were able to install the drivers, and that your serial device was recognised. For this, you can use the following command:
+```sh
+lsusb -cui
+```
+
+Your serial device should be shown in the output, including its device assignment. For example, this is what my Conbee II entry looks like:
+```
+  |__1-3         1cf1:0030:0100 02  2.01   12MBit/s 100mA 2IFs (dresden elektronik ingenieurtechnik GmbH ConBee II DE2427995)
+  1-3:1.0         (IF) 02:02:01 1EP  () cdc_acm tty/ttyACM0
+```
+
+The numbers aren't relevant, what's relevant is the device assignment: `ttyACM0` (depending on the device, this can also be `ttyUSB0`, and the `0` at the end can also be a diffent number).
+
+For the Docker container to be able to access the serial device, you need to set its permissions correctly. The easiest way to do this:
+```sh
+sudo chmod 666 /dev/ttyACM0
+```
+
+This isn't ideal, and setting those permissions will only last until you unplug the device (or reboot), but alternatives also aren't ideal.
+
+You can set up a task in the Synology Task Scheduler (in the Control Panel) that runs at boot which will load the module(s) you require and sets the correct permissions:
+```sh
+insmod /lib/modules/cdc-acm.ko
+chmod 666 /dev/ttyACM0
+```
+
+When the module has loaded and the device has the correct permissions, you can configure a Docker container to use it.
+
+This cannot be done from the GUI that DSM provides for containers, so you need to familiarise yourself with running Docker from the command line.
+
+With the regular `docker` command, use the `--device` argument:
+```sh
+docker run --device /dev/ttyACM0 ...
+```
+
+If you use `docker-compose` (recommended) you add the following to the compose file (typically called `compose.yaml` or `compose.yml`):
+```yaml
+devices:
+  - "/dev/ttyACM0:/dev/ttyACM0" 
+```
+More information [here](https://docs.docker.com/compose/compose-file/compose-file-v3/#devices).
+
+When you start the container, the serial device should now be accessible as `/dev/ttyACM0`
+
+See the various projects' documentation for more information:
+* [Zigbee2MQTT](https://www.zigbee2mqtt.io/guide/installation/02_docker.html#docker-compose)
+* [Node-RED](https://nodered.org/docs/getting-started/docker#accessing-host-devices)
+* [Home Assistant](https://www.home-assistant.io/installation/linux#exposing-devices)
+
 ### Building from source
 
 I've built these modules in an Ubuntu 18.04.5 virtual machine on my Synology NAS.
