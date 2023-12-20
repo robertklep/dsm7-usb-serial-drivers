@@ -56,24 +56,26 @@ You don't need to reboot your NAS for the modules to load, just execute the scri
 
 ###### Note: if you don't want to use the script, at least make sure that you load `usbserial.ko` before any of the provided drivers, otherwise you'll get errors.
 
-#### Usage with NodeRed and Docker Compose on NAS
+#### Usage with Docker
 
-Since many people might use those sensors together with NodeRed and docker, here is a short guide, to getting the USB Serial Device available in NodeRed.
+Since many people might use those sensors together with Home Assistant, NodeRed, zigbee2mqtt or any other dockerized apps, here is a short guide, to getting the USB Serial Device available within docker.
 
 * Make sure to install the driver properly as above mentioned
-* You should have the _ttyUSB0_ device available. (can be checked with the command `ls /dev/ttyUSB0`. The response should be `/dev/ttyUSB0`)
-* Depending on your user settings, NodeRed needs access to this device. Make sure to set them up to have access to this device. A easy but not recommended and unsecure workarround is to used `chmod 777 /dev/ttyUSB0`.
-* In your docker compose file, make sure to pass the ttyUSB0 device: 
+* You should have the _/dev/ttyUSB0_ device available. (can be checked with the command `ls /dev/ttyUSB0`. The response should be `/dev/ttyUSB0`)
+* Depending on your user settings, the docker container needs access to this *ttyUSB0* device. Make sure to set the container up, to have access to this device. An easy but not recommended workarround is to allow access for all users to the tty device by using `chmod 777 /dev/ttyUSB0`.
+* When using docker, make sure to pass the ttyUSB0 device. For NodeRed, using docker compose this could look like this:
   ```
+  [...]
   devices:
     - "/dev/ttyUSB0:/dev/ttyUSB0" 
+  [...]
   ```
-* In NodeRed, use some serial node (in this example, the node *node-red-contrib-smartmeter* is being used) and set the settings accordingly to the passed ttyUSB0 device:
-  
+* Now the serial device should be accessible from within your docker application using `dev/ttyUSB0`. In NodeRed for example, use can use some serial node (below used node is *node-red-contrib-smartmeter*) and set the settings accordingly:
+
   ![](/ressources/NodeRed_settings_of_serial_device.png)
 
 
-Here is my docker compose to get you started:
+Here is my docker compose for NodeRed to get you started. It should work similar for other applications as well:
 ```
 node-red:
   image: nodered/node-red:3.0.2
