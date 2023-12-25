@@ -13,6 +13,7 @@ Since the website Jadahl.com, another good source of DSM modules, has been offli
 
 ###### Note: some USB serial devices may already be supported natively by Synology using its USB CDC ACM driver (`/lib/modules/cdc-acm.ko`).
 ###### Note: this repository is only for USB serial device drivers, it doesn't (and won't) provide drivers for other types of USB devices (TV tuners, Bluetooth, audio, etc). Sorry 🤷🏼‍♂️
+###### Note: take a look [at this project](https://github.com/bb-qq/r8152) for modules that support certain USB Ethernet adapters.
 
 ### Supported platforms
 
@@ -98,7 +99,7 @@ docker run --device /dev/ttyACM0 ...
 If you use `docker-compose` (recommended) you add the following to the compose file (typically called `compose.yaml` or `compose.yml`):
 ```yaml
 devices:
-  - "/dev/ttyACM0:/dev/ttyACM0" 
+  - "/dev/ttyACM0:/dev/ttyACM0"
 ```
 More information [here](https://docs.docker.com/compose/compose-file/compose-file-v3/#devices).
 
