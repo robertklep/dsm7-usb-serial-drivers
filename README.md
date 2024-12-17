@@ -52,7 +52,7 @@ wget 'https://github.com/robertklep/dsm7-usb-serial-drivers/raw/main/modules/gem
 
 You don't need to reboot your NAS for the modules to load, just execute the script after you completed the previous steps:
 ```
-# /usr/local/etc/rc.d/usb-serial-drivers.sh start
+sudo /usr/local/etc/rc.d/usb-serial-drivers.sh start
 ```
 
 ###### Note: if you don't want to use the script, at least make sure that you load `usbserial.ko` before any of the provided drivers, otherwise you'll get errors.
