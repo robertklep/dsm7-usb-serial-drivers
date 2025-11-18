@@ -25,6 +25,11 @@ Drivers for DSM 7.0 are available for most platforms, drivers for DSM 7.1 and 7.
 
 Find your Synology model [on this page](https://kb.synology.com/en-uk/DSM/tutorial/What_kind_of_CPU_does_my_NAS_have) and check the "Package Arch" column (second last).
 
+Alternatively, run the following command from a shell:
+```
+grep platform_name /etc/synoinfo.conf
+```
+
 ### Downloading a module
 
 Github is a bit confusing if you want to download binary files like this repository provides.
@@ -110,32 +115,11 @@ See the various projects' documentation for more information:
 * [Node-RED](https://nodered.org/docs/getting-started/docker#accessing-host-devices)
 * [Home Assistant](https://www.home-assistant.io/installation/linux#exposing-devices)
 
-### Building from source
+### Build environment
 
-I've built these modules in an Ubuntu 18.04.5 virtual machine on my Synology NAS.
+After having had numerous issues with the [official cross-compilation environment](https://help.synology.com/developer-guide/getting_started/prepare_environment.html), I've transitioned to a custom environment that runs on my Ubuntu server.
 
-To set up the build environment, I followed the steps [in this document](https://help.synology.com/developer-guide/getting_started/prepare_environment.html). The different NAS targets/platforms can be installed next to each other.
-
-To build the modules for a particular platform, I follow these steps:
-```
-sudo rm -fr /toolkit/build_env/ds.$platform-7.0/source
-sudo /toolkit/pkgscripts-ng/PkgCreate.py -X 0 -P 1 -v 7.0 --min-sdk 7.0 -p $platform $module
-cp -v /toolkit/build_env/ds.$platform-7.0/source/$module/*.ko /tmp
-```
-
-Replace `$platform` with the NAS platform, for example `apollolake`.
-Replace `$module` with the source directory name (found in `sources/` in this repository) relevant for that particular platform. For example, `apollolake` requires the `4.4.x` sources.
-
-Put together, to build for `apollolake`, the commands become:
-```
-sudo rm -fr /toolkit/build_env/ds.apollolake-7.0/source
-sudo /toolkit/pkgscripts-ng/PkgCreate.py -X 0 -P 1 -v 7.0 --min-sdk 7.0 -p apollolake 4.4.x
-cp -v /toolkit/build_env/ds.apollolake-7.0/source/$module/*.ko /tmp
-```
-
-Due to some concurrency issues that I haven't bothered to look into, the second step (`PkgCreate`) sometimes fails with a compilation error. If that happens, start over.
-
-The last step will copy the driver modules to `/tmp`
+Since it's basically a set of shell scripts that depend on a particular (very tailored to my server) directory structure, I don't think it's very useful to share. However, if you're really interested in building your own kernel modules, feel free contact me and I can explain how it works.
 
 ### Disclaimer
 
