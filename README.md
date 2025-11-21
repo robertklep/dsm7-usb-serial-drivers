@@ -19,7 +19,9 @@ Since the website Jadahl.com, another good source of DSM modules, has been offli
 
 See [the modules/ directory](https://github.com/robertklep/dsm7-usb-serial-drivers/tree/main/modules).
 
-Drivers for DSM 7.0 are available for most platforms, drivers for DSM 7.1 and 7.2 are slowly being added. If you're missing drivers for a particular platform, please [open an issue](https://github.com/robertklep/dsm7-usb-serial-drivers/issues) and I see what I can do (please also add the kernel version of your platform to your issue, you can find that out with `uname -a` from a terminal).
+Drivers for DSM 7.0 are available for most platforms, drivers for DSM 7.1 and 7.2 are slowly being added (see note for DSM 7.3 below). If you're missing drivers for a particular platform, please [open an issue](https://github.com/robertklep/dsm7-usb-serial-drivers/issues) and I see what I can do (please also add the kernel version of your platform to your issue, you can find that out with `uname -a` from a terminal).
+
+###### Note: most 7.2 drivers will work on 7.3 as well. If not, please open an issue.
 
 ### Which platform does my Synology use?
 
@@ -45,6 +47,10 @@ If you use a CLI tool like `wget` or `curl` to download the files, you also need
 wget 'https://github.com/robertklep/dsm7-usb-serial-drivers/raw/main/modules/geminilake/dsm-7.1/cp210x.ko'
 ```
 (notice the "raw" in the URL)
+
+### Help, I get an "Unknown symbol in module" error when loading the modules!
+
+Follow the above downloading instructions _carefully_.
 
 ### Installation
 
