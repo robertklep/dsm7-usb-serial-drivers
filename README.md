@@ -21,7 +21,9 @@ See [the modules/ directory](https://github.com/robertklep/dsm7-usb-serial-drive
 
 Drivers for DSM 7.0 are available for most platforms, drivers for DSM 7.1 and 7.2 are slowly being added (see note for DSM 7.3 below). If you're missing drivers for a particular platform, please [open an issue](https://github.com/robertklep/dsm7-usb-serial-drivers/issues) and I see what I can do (please also add the kernel version of your platform to your issue, you can find that out with `uname -a` from a terminal).
 
-###### Note: most 7.2 drivers will work on 7.3 as well. If not, please open an issue.
+#### "My DSM version is unsupported!"
+
+Since Synology doesn't update the kernel versions for older models very often, the drivers from a previous DSM version will usually work fine on newer versions. For example, most 7.3 drivers will also work on 7.4. Please try before opening an issue.
 
 ### Which platform does my Synology use?
 
